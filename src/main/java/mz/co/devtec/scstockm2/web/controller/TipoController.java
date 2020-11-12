@@ -22,32 +22,32 @@ public class TipoController {
 	@Autowired
 	private TipoService tipoService;
 
-	@GetMapping("/cadastrar")
-	public String cadastrar(Tipo tipo) { // Este metodo abre a pagina de cadastrar tipos com o objecto "tipo" que eh uma instancia de Tipo
-		return "tipo/cadastro";		//tipo eh a pasta com ficheiro HTML denominado cadastro. Que abre tela de cadastro de tipos
+	@GetMapping("/registar")
+	public String registar(Tipo tipo) { // Este metodo abre a pagina de registar tipos com o objecto "tipo" que eh uma instancia de Tipo
+		return "tipo/registo";		//tipo eh a pasta com ficheiro HTML denominado registo. Que abre tela de registo de tipos
 	}
 
-	@GetMapping("/listar")
-	public String listar(ModelMap model) { // Este metodo abre a pagina de listar tipos
+	@GetMapping("/visualizar")
+	public String visualizar(ModelMap model) { // Este metodo abre a pagina de visualizar tipos
 		model.addAttribute("tipos", tipoService.buscarTodos()); // tipos e' o nome da variavel que eh
 																		// enviada la para a pagina
 		return "tipo/lista";			//tipos eh a pasta com ficheiro HTML denominado lista. Que abre tela de visualizacao de tipo
 	}
 
-	@PostMapping("/salvar")
-	public String salvar(@Valid Tipo tipo,BindingResult result, RedirectAttributes attr) {
+	@PostMapping("/registar")
+	public String registar(@Valid Tipo tipo,BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "tipo/cadastro";
+			return "tipo/registo";
 		}
-		tipoService.salvarTipo(tipo);
+		tipoService.registarTipo(tipo);
 		attr.addFlashAttribute("success", "Tipo registado com Sucesso!");
-		return "redirect:/tipos/cadastrar";
+		return "redirect:/tipos/visualizar";
 	}
 
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de cadastro com o(s) campo(s) preenchido(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("tipo", tipoService.buscarPorId(id));
-		return "tipo/cadastro";
+		return "tipo/registo";
 	}
 
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Registar Tipos de Unidades</span></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" id="registo">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${tipo.id == null} ? @{/tipos/registar} : @{/tipos/editar}"
+				th:object="${tipo}" method="POST">
+
+				<div th:replace="fragments/validacao :: validacao"></div>
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="designacao">Tipo</label> <input type="text"
+							class="form-control" id="designacao" placeholder="Nome do Tipo"
+							autofocus="autofocus" th:field="*{designacao}" value="" />
+					</div>
+				</div>
+				<input type="hidden" id="id" name="id" th:field="*{id}" />
+				<!-- Este input com id serve para garantir que ao actualizar pego o objecto correcto atraves do campo id -->
+				<button type="submit" class="btn btn-primary btn-sm corPadrao">Registar</button>
+			</form>
+		</div>
+	</section>
+
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
+
+</body>
+</html>

@@ -26,7 +26,7 @@ public class TipoService {
 	
 	
 	@Transactional(readOnly = false)
-	public void salvarTipo(Tipo tipo) {
+	public void registarTipo(Tipo tipo) {
 		repository.save(tipo);		
 	}
 	

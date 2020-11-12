@@ -22,36 +22,36 @@ public class EntradaController {
 	@Autowired
 	private EntradaService entradaService;
 
-	@GetMapping("/cadastrar")
-	public String cadastrar(Entrada entrada) { // Este metodo abre a pagina de cadastrar entradas com o objecto
+	@GetMapping("/registar")
+	public String registar(Entrada entrada) { // Este metodo abre a pagina de registar entradas com o objecto
 												// "entrada" que eh uma instancia de Entrada
-		return "entrada/cadastro"; // entrada eh a pasta com ficheiro HTML denominado cadastro. Que abre tela de
-									// cadastro de entradas
+		return "entrada/registo"; // entrada eh a pasta com ficheiro HTML denominado registo. Que abre tela de
+									// registo de entradas
 	}
 
-	@GetMapping("/listar")
-	public String listar(ModelMap model) { // Este metodo abre a pagina de listar entradas
+	@GetMapping("/visualizar")
+	public String listar(ModelMap model) { // Este metodo abre a pagina de visualizar entradas
 		model.addAttribute("entradas", entradaService.buscarTodas()); // entradas e' o nome da variavel que eh
 																// enviada la para a pagina
 		return "entrada/lista"; // entradas eh a pasta com ficheiro HTML denominado lista. Que abre tela de
 								// visualizacao de entrada
 	}
 
-	@PostMapping("/salvar")
-	public String salvar(@Valid Entrada entrada, BindingResult result, RedirectAttributes attr) {
+	@PostMapping("/registar")
+	public String registar(@Valid Entrada entrada, BindingResult result, RedirectAttributes attr) {
 		if (result.hasErrors()) {
-			return "entrada/cadastro";
+			return "entrada/registo";
 		}
-		entradaService.salvarEntrada(entrada);
-		attr.addFlashAttribute("success", "Entrada registado com Sucesso!");
-		return "redirect:/entradas/cadastrar";
+		entradaService.registarEntrada(entrada);
+		attr.addFlashAttribute("success", "Entrada registada com Sucesso!");
+		return "redirect:/entradas/visualizar";
 	}
 
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { // Chama a tela de cadastro com o(s) campo(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { // Chama a tela de registo com o(s) campo(s)
 																			// preenchido(s)
 		model.addAttribute("entrada", entradaService.buscarPorId(id));
-		return "entrada/cadastro";
+		return "entrada/registo";
 	}
 
 

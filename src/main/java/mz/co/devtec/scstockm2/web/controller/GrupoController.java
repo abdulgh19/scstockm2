@@ -30,36 +30,36 @@ public class GrupoController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
-	@GetMapping("/cadastrar")
-	public String cadastrar(Grupo grupo) {
-		return "grupo/cadastro";
+	@GetMapping("/registar")
+	public String registar(Grupo grupo) {
+		return "grupo/registo";
 	}
 	
-	@GetMapping("/listar")
-	public String listar(ModelMap model) {
+	@GetMapping("/visualizar")
+	public String visualizar(ModelMap model) {
 		model.addAttribute("grupos", grupoService.buscarTodos()); //"grupos" eh a variavel que eh mandada para os grupo!
 		return "grupo/lista";
 	}
 	
-	@PostMapping("/salvar")
-	public String salvar(@Valid Grupo grupo, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto cargo
+	@PostMapping("/registar")
+	public String registar(@Valid Grupo grupo, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto cargo
 		if(result.hasErrors()) {
-			return "/grupo/cadastro";
+			return "/grupo/registo";
 		}
-		grupoService.salvarGrupo(grupo);
+		grupoService.registarGrupo(grupo);
 		attr.addFlashAttribute("success", "Grupo registado com Sucesso!");
-		return "redirect:/grupos/cadastrar";
+		return "redirect:/grupos/visualizar";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o grupo com aquele ID e retorna a tela de cadastro com o(s) campo(s) preenchido(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o grupo com aquele ID e retorna a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("grupo", grupoService.buscarPorId(id));
-		return "grupo/cadastro";
+		return "grupo/registo";
 	}
 
 	
 	@ModelAttribute("categorias")
-	public List<Categoria> listaDeCategorias(){
+	public List<Categoria> ListaDeCategorias(){
 		
 		return categoriaService.buscarTodas();
 	}

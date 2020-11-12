@@ -26,7 +26,7 @@ public class UnidadeService {
 	
 	
 	@Transactional(readOnly = false)
-	public void salvarUnidade(Unidade unidade) {
+	public void registarUnidade(Unidade unidade) {
 		repository.save(unidade);		
 	}
 	

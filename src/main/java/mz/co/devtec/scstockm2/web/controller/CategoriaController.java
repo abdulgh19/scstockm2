@@ -22,32 +22,32 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService categoriaService;
 
-	@GetMapping({"/cadastrar","", "/"})
-	public String cadastrar(Categoria categoria) { // Este metodo abre a pagina de cadastrar categorias com o objecto "categoria" que uma instancia de Categoria
-		return "categoria/cadastro";		//categoria eh a pasta com ficheiro HTML denominado cadastro. Que abre tela de cadastro de categorias
+	@GetMapping({"/registar","", "/"})
+	public String registar(Categoria categoria) { // Este metodo abre a pagina de registar categorias com o objecto "categoria" que uma instancia de Categoria
+		return "categoria/registo";		//categoria eh a pasta com ficheiro HTML denominado registo. Que abre tela de registo de categorias
 	}
 
-	@GetMapping("/listar")
-	public String listar(ModelMap model) { // Este metodo abre a pagina de listar categorias
+	@GetMapping("/visualizar")
+	public String visualizar(ModelMap model) { // Este metodo abre a pagina de visualiza categorias
 		model.addAttribute("categorias", categoriaService.buscarTodas()); // categorias e' o nome da variavel que eh
 																		// enviada la para a pagina
 		return "categoria/lista";			//categoria eh a pasta com ficheiro HTML denominado lista. Que abre tela de visualizacao de categorias
 	}
 
-	@PostMapping("/salvar")
-	public String salvar(@Valid Categoria categoria,BindingResult result, RedirectAttributes attr) {
+	@PostMapping("/registar")
+	public String registar(@Valid Categoria categoria,BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "categoria/cadastro";
+			return "categoria/registo";
 		}
-		categoriaService.salvarCategoria(categoria);
+		categoriaService.registarCategoria(categoria);
 		attr.addFlashAttribute("success", "Categoria registada com Sucesso!");
-		return "redirect:/categorias/cadastrar";
+		return "redirect:/categorias/visualizar";
 	}
 
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de cadastro com o(s) campo(s) preenchido(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("categoria", categoriaService.buscarPorId(id));
-		return "categoria/cadastro";
+		return "categoria/registo";
 	}
 
 

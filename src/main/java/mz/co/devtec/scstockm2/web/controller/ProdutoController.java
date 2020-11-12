@@ -42,31 +42,31 @@ public class ProdutoController {
 	private UnidadeService unidadeService;
 	
 	
-	@GetMapping("/cadastrar")
-	public String cadastrar(Produto produto) {
-		return "produto/cadastro";
+	@GetMapping("/registar")
+	public String registar(Produto produto) {
+		return "produto/registo";
 	}
 	
-	@GetMapping("/listar")
-	public String listar(ModelMap model) {
+	@GetMapping("/visualizar")
+	public String visualizar(ModelMap model) {
 		model.addAttribute("produtos", produtoService.buscarTodos()); //"produtos" eh a variavel que eh mandada para os produtos!
 		return "produto/lista";
 	}
 	
-	@PostMapping("/salvar")
-	public String salvar(@Valid Produto produto, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto produto
+	@PostMapping("/registar")
+	public String registar(@Valid Produto produto, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto produto
 		if(result.hasErrors()) {
-			return "/produto/cadastro";
+			return "/produto/registo";
 		}
-		produtoService.salvarProduto(produto);
+		produtoService.registarProduto(produto);
 		attr.addFlashAttribute("success", "Produto registado com Sucesso!");
-		return "redirect:/produtos/cadastrar";
+		return "redirect:/produtos/visualizar";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o produto com aquele ID e retorna a tela de cadastro com o(s) campo(s) preenchido(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o produto com aquele ID e retorna a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("produto", produtoService.buscarPorId(id));
-		return "produto/cadastro";
+		return "produto/registo";
 	}
 	
 	

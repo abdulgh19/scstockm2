@@ -30,31 +30,31 @@ public class UnidadeController {
 	@Autowired
 	private TipoService tipoService;
 	
-	@GetMapping("/cadastrar")
-	public String cadastrar(Unidade unidade) {
-		return "unidade/cadastro";
+	@GetMapping("/registar")
+	public String registar(Unidade unidade) {
+		return "unidade/registo";
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping("/visualizar")
 	public String listar(ModelMap model) {
 		model.addAttribute("unidades", unidadeService.buscarTodas()); //"unidades" eh a variavel que eh mandada para os unidade!
 		return "unidade/lista";
 	}
 	
-	@PostMapping("/salvar")
-	public String salvar(@Valid Unidade unidade, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto cargo
+	@PostMapping("/registar")
+	public String registar(@Valid Unidade unidade, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto cargo
 		if(result.hasErrors()) {
-			return "/unidade/cadastro";
+			return "/unidade/registo";
 		}
-		unidadeService.salvarUnidade(unidade);
+		unidadeService.registarUnidade(unidade);
 		attr.addFlashAttribute("success", "Unidade registado com Sucesso!");
-		return "redirect:/unidades/cadastrar";
+		return "redirect:/unidades/visualizar";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o unidade com aquele ID e retorna a tela de cadastro com o(s) campo(s) preenchido(s)
+	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o unidade com aquele ID e retorna a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("unidade", unidadeService.buscarPorId(id));
-		return "unidade/cadastro";
+		return "unidade/registo";
 	}
 
 	

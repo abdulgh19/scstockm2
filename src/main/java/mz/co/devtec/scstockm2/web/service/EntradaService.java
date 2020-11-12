@@ -26,7 +26,7 @@ public class EntradaService {
 	
 	
 	@Transactional(readOnly = false)
-	public void salvarEntrada(Entrada entrada) {
+	public void registarEntrada(Entrada entrada) {
 		repository.save(entrada);		
 	}
 	

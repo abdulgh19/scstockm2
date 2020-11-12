@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Registar Unidades</span></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" id="registo">
+			<form
+				th:action="${unidade.id == null} ? @{/unidades/registar} : @{/unidades/editar}"
+				th:object="${unidade}" method="POST">
+				<div class="form-row">
+
+					<div th:replace="fragments/validacao :: validacao"></div>
+
+
+					<div class="form-group col-md-6">
+						<label for="designacao">Nome do Unidade</label> <input type="text"
+							class="form-control" id="designacao" placeholder="Nome Unidade"
+							autofocus="autofocus" th:field="*{designacao}" />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="tipo">Tipos</label> <select id="tipo"
+							class="form-control" th:field="*{tipo}">
+							<option value="">Selecione um tipo</option>
+							<option th:each="t: ${tipos}" th:value="${t.id}"
+								th:text="${t.designacao}">TIPO A</option>
+						</select>
+					</div>
+				</div>
+				<input type="hidden" id="id" th:field="*{id}" value="" />
+				<button type="submit" class="btn btn-primary btn-sm corPadrao">Registar</button>
+			</form>
+		</div>
+	</section>
+
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
+
+</body>
+</html>

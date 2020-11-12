@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "produto")
 public class Produto extends AbstractEntity {
 	
-	@Column(name = "designacao", unique = false, nullable = false)
+	@Column(name = "designacao", unique = true, nullable = false)
 	private String designacao;
 	
 	@Column(name = "quantidade", unique = false, nullable = false)

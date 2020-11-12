@@ -42,7 +42,7 @@ body {
     border-right: 1px solid #eee;    
     background-color: #f8f9fa;
     flex-shrink: 0;
-    overflow: hidden;
+    overflow:scroll;
     transition: width .5s;
 }
 
@@ -73,21 +73,26 @@ body {
 
 .sidebar ul li a{
     display: block;
-    color:#1a1a1a;
+   /* color:#1a1a1a; */
+   /* color:maroon; */
+  	 color:green;
     padding: 10px 15px;
     white-space: nowrap;
 }
 
 .sidebar.sidebar-open {
-    width: 300px;
+    width: 250px;
 }
 
 /*
  * nav-pills home
  */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-	color: #fff;
-	background-color: #1e94d2;
+	 color: #fff;
+	/* color:#80ff80; */
+	
+	background-color: #808000;
+	/* background-color: #1e94d2; */
 }
 
 /*
@@ -103,13 +108,14 @@ body {
  * Footer
  */
 .layout-footer {
-	position: relative;
+	position:relative;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: 0;
 	height: 50px;
-	border-top: 1px solid #eeeeee;
+	/* border-top: 1px solid #eeeeee; */
+
 }
 
 .footer-copy {
@@ -117,4 +123,18 @@ body {
 	display: block;
 	color: #777777;
 	text-align: center;
+}
+
+
+/* Muda a cor padrao do Primary dos botoes */
+
+.corPadrao {
+	background-color:#808000;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #285e8e; /*set the color you want here*/
 }

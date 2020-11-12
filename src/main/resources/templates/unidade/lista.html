@@ -15,15 +15,11 @@
 	                    </li>
 	                </ul>
 	            </div>
-	            <a class="btn btn-primary btn-md" href="/unidades/cadastrar" role="button">
-	                <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                <span>Novo Unidade</span>
-	            </a>
 	        </nav>
 	        
 	             <div th:replace="fragments/alert"></div>
 	
-	        <div class="container" id="listagem">
+	        <div class="container" id="visualizacao">
 	            <div class="table-responsive">
 	                <table class="table table-striped table-hover table-sm">
 	                    <thead>
@@ -31,7 +27,7 @@
 	                        <th>#</th>
 	                        <th>Unidade</th>
 	                        <th>Tipo</th>
-	                        <th>Ação</th>
+	                        <th>Evento</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
@@ -58,6 +54,9 @@
 	            <div th:replace="fragments/modal :: modal" ></div>
 	        
 	    </section>
+	
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
 	
 </body>
 </html>		

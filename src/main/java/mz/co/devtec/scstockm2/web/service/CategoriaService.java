@@ -26,7 +26,7 @@ public class CategoriaService {
 	
 	
 	@Transactional(readOnly = false)
-	public void salvarCategoria(Categoria categoria) {
+	public void registarCategoria(Categoria categoria) {
 		repository.save(categoria);		
 	}
 	

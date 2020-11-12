@@ -15,10 +15,6 @@
 	                        <span>Lista de Entradas</span>
 	                    </li>
 	                </ul>
-	                <a class="btn btn-primary btn-md" th:href="@{/entradas/cadastrar}" role="button">
-	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Novo Entrada</span>
-	                </a>
 	            </div>
 	        </nav>
 	
@@ -33,7 +29,7 @@
 	                        <th>#</th>
 	                        <th>Codigo</th>
 	                        <th>Data</th>
-	                        <th>Ação</th>
+	                        <th>Evento</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
@@ -60,6 +56,9 @@
 	        <div th:replace="fragments/modal :: modal" ></div>
 	
 	    </section>
+	    
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
 	
 </body>
 </html>		

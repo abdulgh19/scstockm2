@@ -26,7 +26,7 @@ public class ProdutoService {
 	
 	
 	@Transactional(readOnly = false)
-	public void salvarProduto(Produto produto) {
+	public void registarProduto(Produto produto) {
 		repository.save(produto);		
 	}
 	
