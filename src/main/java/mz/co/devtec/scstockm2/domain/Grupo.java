@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,6 +25,7 @@ public class Grupo extends AbstractEntity {
 	@Column(name = "designacao", unique = true, nullable = false)
 	private String designacao;
 	
+	@JsonIgnore
 	@NotNull(message = "Selecione a categoria relativa ao cargo!")
 	@ManyToOne (optional = false)
 	@JoinColumn(name = "id_categoria", unique = false, nullable = false)

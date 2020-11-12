@@ -13,12 +13,16 @@
 <link rel="icon" href="/image/favicon.png" />
 
 <!-- Bootstrap core CSS -->
-<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/webjars/bootstrap/css/bootstrap.min.css"  rel="stylesheet" />
 <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- Custom styles for this template -->
 <link href="/css/style.css" rel="stylesheet" />
+
+<!-- jQueryUI (autocomplete) -->
+<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
+
 </head>
 <body>
 
@@ -42,6 +46,7 @@
 		<div>footer</div>
 	</footer>
 	
+	
 		<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -49,7 +54,19 @@
 	<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
+	
+			<!-- jQueryUI (autocomplete) -->
+	<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+	
+	
+	
+	<!-- 	MEUS JS -->
+	<script th:replace=":: js"></script>	
+	<script th:replace=":: inlinescript" th:inline="javascript"></script>
+	
+	
+	
+	<script type="text/javascript">	
 	    
 	var url = '';
 	
@@ -73,6 +90,7 @@
 		});
 
 	</script>
+	
 
 </body>
 </html>

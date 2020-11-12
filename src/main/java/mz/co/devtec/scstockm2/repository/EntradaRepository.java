@@ -11,7 +11,7 @@ import mz.co.devtec.scstockm2.domain.Entrada;
 @Repository
 public interface EntradaRepository extends JpaRepository<Entrada, Long> {
 	
-	@Query("select e from Entrada e where e.designacao like :search% ")
+	@Query("select e from Entrada e where e.codigo like :search% ")
 	Page<Entrada> findAllByDesignacao(String search, Pageable pageable);
 	
 

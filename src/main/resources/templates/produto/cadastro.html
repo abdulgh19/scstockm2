@@ -27,12 +27,13 @@
 			<form
 				th:action="${produto.id == null} ? @{/produtos/salvar} : @{/produtos/editar}"
 				th:object="${produto}" method="POST">
+
 				<div class="form-row">
 
 					<div th:replace="fragments/validacao :: validacao"></div>
 
 					<div class="form-group col-md-4">
-						<label for="grupo">Categorias</label> <select id="grupo"
+						<label for="categoria">Categorias</label> <select id="categoria"
 							class="form-control">
 							<option value="">Selecione uma categoria</option>
 							<option th:each="c: ${categorias}" th:value="${c.id}"
@@ -65,16 +66,24 @@
 
 					<div class="form-group col-md-6">
 						<label for="quantidade">Quantidade</label> <input type="text"
-							class="form-control" id="quantidade" placeholder="Quantidade de Produto"
-							autofocus="autofocus" th:field="*{quantidade}" />
+							class="form-control" id="quantidade"
+							placeholder="Quantidade de Produto" autofocus="autofocus"
+							th:field="*{quantidade}" />
 					</div>
 
 				</div>
+
 				<input type="hidden" id="id" th:field="*{id}" value="" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+
 			</form>
 		</div>
 	</section>
+
+	<script th:src="@{/js/produto.js?(v=${version})}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript">
+		
+	</script>
 
 </body>
 </html>

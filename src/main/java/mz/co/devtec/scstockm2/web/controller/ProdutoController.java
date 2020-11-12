@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mz.co.devtec.scstockm2.domain.Categoria;
@@ -67,6 +68,14 @@ public class ProdutoController {
 		model.addAttribute("produto", produtoService.buscarPorId(id));
 		return "produto/cadastro";
 	}
+	
+	
+	@GetMapping("/grupos/categoria/{idCategoria}")		//Preenche a ComboBox de grupos com base na categoria escolhida na como de categorias
+	@ResponseBody
+	public List<Grupo> getListaGruposPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
+		return grupoService.buscarGrupoPorIdCategoria(idCategoria);
+	}
+	
 
 		
 	@ModelAttribute("unidades")
@@ -85,6 +94,9 @@ public class ProdutoController {
 	public List<Categoria> listaDeCategoria(){
 		return categoriaService.buscarTodas();
 	}
+	
+	
+	
 	
 	
 

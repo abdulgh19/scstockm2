@@ -58,7 +58,6 @@ public class UnidadeController {
 	}
 
 	
-	
 	@ModelAttribute("tipos")
 	public List<Tipo> listaDeTipos(){
 		

@@ -57,6 +57,14 @@ public class GrupoService {
 	public List<Grupo> buscarTodos() {
 		return repository.findAll();
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Grupo> buscarGrupoPorIdCategoria(Long idCategoria) {
+
+		return repository.findGrupoByIdDeCategoria(idCategoria);
+	}
+	
+	
 
 
 
