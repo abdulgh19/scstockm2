@@ -21,7 +21,7 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${grupo.id == null} ? @{/grupos/registar} : @{/grupos/editar}"
+				th:action="${grupo.id == null} ? @{/grupos/registar} : @{/grupos/actualizar}"
 				th:object="${grupo}" method="POST">
 				<div class="form-row">
 

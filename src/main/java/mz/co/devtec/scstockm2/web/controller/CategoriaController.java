@@ -43,11 +43,22 @@ public class CategoriaController {
 		attr.addFlashAttribute("success", "Categoria registada com Sucesso!");
 		return "redirect:/categorias/visualizar";
 	}
+	
 
-	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
+	@GetMapping("/actualizar/{id}")
+	public String mandarActualizar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("categoria", categoriaService.buscarPorId(id));
 		return "categoria/registo";
+	}
+	
+	@PostMapping("/actualizar")
+	public String actualizar(@Valid Categoria categoria,BindingResult result , RedirectAttributes attr) {
+		if(result.hasErrors()) {
+			return "categoria/cadastro";
+		}
+		categoriaService.registarCategoria(categoria);
+		attr.addFlashAttribute("success", "Categoria actualizada com Sucesso!");
+		return "redirect:/categorias/visualizar";
 	}
 
 

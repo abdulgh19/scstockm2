@@ -20,13 +20,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "grupo")
 public class Grupo extends AbstractEntity {
 
-	@NotBlank(message = "Informe um nome!")
-	@Size(max = 45, message = "A designacao do Grupo deve no maximo 60 caracteres!")
+	@NotBlank(message = "Informe uma designação!")
+	@Size(min = 3, max = 45, message = "A designação do grupo deve ter entre {min} e {max} caracteres!")
 	@Column(name = "designacao", unique = true, nullable = false)
 	private String designacao;
 	
 	@JsonIgnore
-	@NotNull(message = "Selecione a categoria relativa ao cargo!")
+	@NotNull(message = "Selecione a categoria relativa ao grupo!")
 	@ManyToOne (optional = false)
 	@JoinColumn(name = "id_categoria", unique = false, nullable = false)
 	private Categoria categoria;	

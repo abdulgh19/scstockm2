@@ -18,7 +18,7 @@
 
 		<div class="container" id="registo">
 			<form
-				th:action="${unidade.id == null} ? @{/unidades/registar} : @{/unidades/editar}"
+				th:action="${unidade.id == null} ? @{/unidades/registar} : @{/unidades/actualizar}"
 				th:object="${unidade}" method="POST">
 				<div class="form-row">
 

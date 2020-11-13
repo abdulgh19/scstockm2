@@ -44,10 +44,20 @@ public class TipoController {
 		return "redirect:/tipos/visualizar";
 	}
 
-	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
+	@GetMapping("/actualizar/{id}")
+	public String mandarActualizar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("tipo", tipoService.buscarPorId(id));
 		return "tipo/registo";
+	}
+	
+	@PostMapping("/actualizar")
+	public String actualizar(@Valid Tipo tipo,BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) {
+			return "tipo/registo";
+		}
+		tipoService.registarTipo(tipo);
+		attr.addFlashAttribute("success", "Tipo actualizado com Sucesso!");
+		return "redirect:/tipos/visualizar";
 	}
 
 

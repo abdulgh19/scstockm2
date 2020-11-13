@@ -22,7 +22,7 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${entrada.id == null} ? @{/entradas/registar} : @{/entradas/editar}"
+				th:action="${entrada.id == null} ? @{/entradas/registar} : @{/entradas/actualizar}"
 				th:object="${entrada}" method="POST">
 
 				<div th:replace="fragments/validacao :: validacao"></div>

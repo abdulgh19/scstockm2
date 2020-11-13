@@ -22,7 +22,7 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${tipo.id == null} ? @{/tipos/registar} : @{/tipos/editar}"
+				th:action="${tipo.id == null} ? @{/tipos/registar} : @{/tipos/actualizar}"
 				th:object="${tipo}" method="POST">
 
 				<div th:replace="fragments/validacao :: validacao"></div>

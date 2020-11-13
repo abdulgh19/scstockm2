@@ -36,7 +36,7 @@
 	                        <td th:text="${g.designacao}">CAT 4</td>
 	                        <td th:text="${g.categoria.designacao}">Contabilidade</td>
 	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" th:href="@{/grupos/editar/{id} (id= ${g.id})}" role="button">
+	                            <a class="btn btn-info btn-sm" th:href="@{/grupos/actualizar/{id} (id= ${g.id})}" role="button">
 	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 	                            </a>
 	                            <button th:id="${#strings.concat('btn_grupos/excluir/', g.id)}" type="button" class="btn btn-danger btn-sm"

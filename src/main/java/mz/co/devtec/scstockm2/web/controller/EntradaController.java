@@ -47,11 +47,21 @@ public class EntradaController {
 		return "redirect:/entradas/visualizar";
 	}
 
-	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { // Chama a tela de registo com o(s) campo(s)
+	@GetMapping("/actualizar/{id}")
+	public String mandarActualizar(@PathVariable("id") Long id, ModelMap model) { // Chama a tela de registo com o(s) campo(s)
 																			// preenchido(s)
 		model.addAttribute("entrada", entradaService.buscarPorId(id));
 		return "entrada/registo";
+	}
+	
+	@PostMapping("/actualizar")
+	public String actualizar(@Valid Entrada entrada, BindingResult result, RedirectAttributes attr) {
+		if (result.hasErrors()) {
+			return "entrada/registo";
+		}
+		entradaService.registarEntrada(entrada);
+		attr.addFlashAttribute("success", "Entrada actualizada com Sucesso!");
+		return "redirect:/entradas/visualizar";
 	}
 
 

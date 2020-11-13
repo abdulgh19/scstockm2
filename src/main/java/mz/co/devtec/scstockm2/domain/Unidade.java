@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @SuppressWarnings("serial")
@@ -15,6 +17,8 @@ import javax.persistence.Table;
 @Table(name = "unidade")
 public class Unidade extends AbstractEntity {
 
+	@NotBlank(message = "Informe uma designação")
+	@Size(min = 3, max = 45, message = "A designação da unidade deve ter entre {min} e {max} caracteres")
 	@Column(name = "designacao", unique = true, nullable = false)
 	private String designacao;
 	

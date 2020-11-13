@@ -51,8 +51,8 @@ public class UnidadeController {
 		return "redirect:/unidades/visualizar";
 	}
 	
-	@GetMapping("/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o unidade com aquele ID e retorna a tela de registo com o(s) campo(s) preenchido(s)
+	@GetMapping("/actualizar/{id}")
+	public String mandarActualizar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o unidade com aquele ID e retorna a tela de registo com o(s) campo(s) preenchido(s)
 		model.addAttribute("unidade", unidadeService.buscarPorId(id));
 		return "unidade/registo";
 	}
@@ -62,6 +62,16 @@ public class UnidadeController {
 	public List<Tipo> listaDeTipos(){
 		
 		return tipoService.buscarTodos();
+	}
+	
+	@PostMapping("/actualizar")
+	public String actualizar(@Valid Unidade unidade, BindingResult result, RedirectAttributes attr) { //@Valid informa ao Spring que a validacao esta a ser feita via bean validation para o objecto cargo
+		if(result.hasErrors()) {
+			return "/unidade/registo";
+		}
+		unidadeService.registarUnidade(unidade);
+		attr.addFlashAttribute("success", "Unidade actualizada com Sucesso!");
+		return "redirect:/unidades/visualizar";
 	}
 	
 	
